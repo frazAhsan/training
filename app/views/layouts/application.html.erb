@@ -37,26 +37,38 @@
     <![endif]-->
   </head>
   <body>
-
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">EmployeeTraining</a>
-        <% if user_signed_in? %>
-          <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-              <li><%= link_to "Folders", "/folders"  %></li>
-              <li><%= link_to "Files", "/media"  %></li>
-              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
-            </ul>
-          </div>
-        <% end %>
+    <%if current_user.first_login == false %>
+      <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">EmployeeTraining</a>
+          <% if user_signed_in? %>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+              <ul class="nav navbar-nav">
+                <li><%= link_to "Folders", "/folders"  %></li>
+                <li><%= link_to "Files", "/media"  %></li>
+                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <%else%>
+      <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">EmployeeTraining</a>
+        </div>
+      </div>
+    <%end%>
 
     <div class="container">
       <div class="row">

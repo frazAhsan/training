@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_agreed, except: [:index, :agreed]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -64,7 +65,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def agreed
+    current_user.update(first_login: false)
+    redirect_to root_url
+  end
+
   private
+    def check_agreed
+      if current_user.first_login == true
+        redirect_to root_url
+      else
+        return true
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

@@ -1,4 +1,6 @@
 class MediaController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_agreed
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
 
   # GET /media
@@ -62,6 +64,13 @@ class MediaController < ApplicationController
   end
 
   private
+    def check_agreed
+      if current_user.first_login == true
+        redirect_to root_url
+      else
+        return true
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_medium
       @medium = Medium.find(params[:id])
