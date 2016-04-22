@@ -1,0 +1,62 @@
+<%= form_for @medium, :html => { :class => "form-horizontal medium" } do |f| %>
+
+  <% if @medium.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@medium.errors.count, "error") %> prohibited this medium from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @medium.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :folder_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :folder_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:folder_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :file_file_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :file_file_name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:file_file_name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :file_content_type, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :file_content_type, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:file_content_type) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :file_file_size, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :file_file_size, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:file_file_size) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :file_updated_at, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :file_updated_at, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:file_updated_at) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                media_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

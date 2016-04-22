@@ -1,0 +1,32 @@
+<div class="main-content content_inner">
+  <div class="consolidate-page clearone-page container-pages">
+    <div class="consolidate-block rating-block">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="rating-detail">
+            <div class="rating-detail-full">
+              <div class="rating-detail-left">
+                <p><strong>Your account has been created on the portal. Your login information is as follows:</strong></p>
+              </div>
+            </div>
+            <div class="rating-detail-full">
+              <div class="rating-detail-left">
+                <p><strong>Email: </strong><%= @user.email %></p>
+              </div>
+            </div>
+            <div class="rating-detail-full">
+              <div class="rating-detail-left">
+                <p><strong>Password: </strong><%= @password %></p>
+              </div>
+            </div>
+            <div class="rating-detail-full">
+              <div class="rating-detail-left">
+                <p><strong>You can login at </strong><%= "#{root_url}#{new_user_session_url}" %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

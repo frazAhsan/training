@@ -1,0 +1,76 @@
+<%= nested_form_for @folder, :html => { :class => "form-horizontal folder" } do |f| %>
+
+  <% if @folder.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @folder.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.fields_for :medium do |media| %>
+      <div class="controls"> 
+        <% if media.object.new_record? %>
+          <%= media.file_field :file %>
+          <%= media.link_to_remove "Remove", class: "btn btn-sm btn-danger" %>
+        <% else %>
+          <div class="col-lg-12">
+            <label class="control-label col-lg-2"></label>
+            <%= link_to media.object.file_file_name, media.object.file.url() %> 
+            <%= media.hidden_field :_destroy %>
+            <%= media.link_to_remove "X", class: "btn btn-sm btn-danger push-right" %></li> 
+          </div>
+        <% end %>
+      </div>  
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-lg-2">Files</label>
+    <div class="col-lg-10">
+      <%= f.link_to_add "Add file", :medium, class: "btn btn-primary" %></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                folders_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
+
+<style type="text/css">
+  .controls{
+    padding-bottom: 10px;
+  }
+  a.remove_nested_fields{
+    margin-top: 10px;
+    display: inline-block;
+  }
+  .push-right{
+    margin-left: 15px;
+  }
+</style>
+
+<script type="text/javascript">
+  $('.tree').treed();
+</script>
