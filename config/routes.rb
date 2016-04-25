@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   
   devise_for :users, :path_prefix => 'auth'
+
+  devise_scope :user do 
+    authenticated :user do
+      root 'folders#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
   resources :users
   resources :media
   resources :folders
@@ -10,7 +20,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  # root to: 'devise/sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
