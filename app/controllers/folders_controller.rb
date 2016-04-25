@@ -1,6 +1,6 @@
 class FoldersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_agreed
+  # before_action :check_agreed
 
   before_action :set_folder, only: [:show, :edit, :update, :destroy]
 
@@ -65,13 +65,6 @@ class FoldersController < ApplicationController
   end
 
   private
-    def check_agreed
-      if current_user.first_login == true
-        redirect_to root_url
-      else
-        return true
-      end
-    end
     # Use callbacks to share common setup or constraints between actions.
     def set_folder
       @folder = Folder.find(params[:id])

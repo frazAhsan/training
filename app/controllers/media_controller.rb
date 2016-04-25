@@ -1,6 +1,6 @@
 class MediaController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_agreed
+  # before_action :check_agreed
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
 
   # GET /media

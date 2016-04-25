@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_agreed, except: [:index, :agreed]
+  # before_action :check_agreed, except: [:index, :agreed]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -67,13 +67,13 @@ class UsersController < ApplicationController
 
   def agreed
     current_user.update(first_login: false)
-    redirect_to root_url
+    redirect_to "/"
   end
 
   private
     def check_agreed
       if current_user.first_login == true
-        redirect_to root_url
+        redirect_to "/"
       else
         return true
       end
