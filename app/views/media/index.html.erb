@@ -5,27 +5,19 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:folder_id) %></th>
-      <th><%= model_class.human_attribute_name(:file_file_name) %></th>
-      <th><%= model_class.human_attribute_name(:file_content_type) %></th>
-      <th><%= model_class.human_attribute_name(:file_file_size) %></th>
-      <th><%= model_class.human_attribute_name(:file_updated_at) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:file) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @media.each do |medium| %>
       <tr>
-        <td><%= link_to medium.id, medium_path(medium) %></td>
-        <td><%= medium.folder_id %></td>
+        <td><%= medium.folder_id.present? ? medium.folder.name : "" %></td>
         <td><%= medium.file_file_name %></td>
-        <td><%= medium.file_content_type %></td>
-        <td><%= medium.file_file_size %></td>
-        <td><%= medium.file_updated_at %></td>
-        <td><%=l medium.created_at %></td>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      edit_medium_path(medium), :class => 'btn btn-primary btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_medium_path(medium), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
