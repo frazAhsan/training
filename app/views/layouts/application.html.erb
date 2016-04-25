@@ -37,7 +37,7 @@
     <![endif]-->
   </head>
   <body>
-    <%if current_user.first_login == false %>
+    <%if user_signed_in? && current_user.first_login == false %>
       <div class="navbar navbar-default navbar-static-top">
         <div class="container">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
