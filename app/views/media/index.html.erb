@@ -17,7 +17,7 @@
         <td><%= medium.file_file_name %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      edit_medium_path(medium), :class => 'btn btn-primary btn-xs' %>
+                      medium_path(medium), :class => 'btn btn-primary btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_medium_path(medium), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

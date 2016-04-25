@@ -9,7 +9,7 @@
       <a href="#"><%= @folder.name %></a>
       <ul>
         <% @folder.medium.each do |media| %>
-          <li><%= media.file_file_name %></li>
+          <li><%= link_to media.file_file_name, media.file.url() %></li>
         <% end %>
       </ul>
     </li>
