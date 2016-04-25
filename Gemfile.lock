@@ -101,6 +101,8 @@ GEM
     nested_form (0.3.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    non-stupid-digest-assets (1.0.8)
+      sprockets (>= 2.0)
     orm_adapter (0.5.0)
     paperclip (4.3.3)
       activemodel (>= 3.2.0)
@@ -199,6 +201,7 @@ DEPENDENCIES
   jquery-rails
   mysql2 (>= 0.3.13, < 0.5)
   nested_form
+  non-stupid-digest-assets (~> 1.0.4)
   paperclip (~> 4.3)
   pry-rails
   rails (= 4.2.5)
