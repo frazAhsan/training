@@ -66,7 +66,7 @@
       <div class="col-lg-10">
         <%= f.radio_button :role, 'admin' %> 
         <%= label :user_role, 'admin' %>
-        <%= f.radio_button :role, 'user' %>
+        <%= f.radio_button :role, 'user', checked: true %>
         <%= label :user_role, 'user' %>
       </div>
       <%=f.error_span(:role) %>

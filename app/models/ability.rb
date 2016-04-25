@@ -5,10 +5,10 @@ class Ability
 
     if user.role == "admin"
       can :manage, :all
-    elsif user.role == "user"
-      can :manage, User, :id => user.id   
-      cannot :create, User
-      cannot :destroy, User     
+    # elsif user.role == "user"
+    #   can :manage, User, :id => user.id   
+    #   cannot :create, User
+    #   cannot :destroy, User     
     end
     # Define abilities for the passed in user here. For example:
     #
